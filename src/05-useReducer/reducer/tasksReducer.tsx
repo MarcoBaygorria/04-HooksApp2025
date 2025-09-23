@@ -1,3 +1,6 @@
+import * as z from "zod";
+
+
 interface Todo {
     id: number;
     text: string;
@@ -17,14 +20,45 @@ export type TaksAction =
     | { type: 'DELETE_TODO', payload: number }
 
 
-export const getTasksInitialState = (): TasksState => {
-    return {
-        todos: [],
-        lenght: 0,
-        completed: 0,
-        pending: 0
+//! Validacion de LocalStorage
+const TodoSchema = z.object({
+    id: z.number(),
+    text: z.string(),
+    completed: z.boolean(),
+})
 
+const TasksStateSchema = z.object({
+    todos: z.array(TodoSchema),
+    lenght: z.number(),
+    completed: z.number(),
+    pending: z.number()
+})
+
+
+
+export const getTasksInitialState = (): TasksState => {
+
+    //Local Storage
+    const localStorageState = localStorage.getItem('tasks-state');
+    if (!localStorageState) {
+        return {
+            todos: [],
+            lenght: 0,
+            completed: 0,
+            pending: 0
+        };
     }
+    //Validar mediante Zod
+    const result = TasksStateSchema.safeParse(JSON.parse(localStorageState));
+    if (result.error) {
+        return {
+            todos: [],
+            lenght: 0,
+            completed: 0,
+            pending: 0
+        };
+    }
+    return result.data
 }
 
 
