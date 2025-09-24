@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { TasksApp } from './05-useReducer/TaskApp.js'
+import { ScrambleWords } from './05-useReducer/ScrambleWords.js'
 
 
 // import { FocusScreen } from './04-useRef/FocusScreen.js'
@@ -19,7 +20,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     {/* <TrafficLightWithHook /> */}
     {/* <PokemonPage /> */}
     {/* <FocusScreen /> */}
+    {/* <TasksApp /> */}
 
-    <TasksApp />
+    <ScrambleWords />
   </React.StrictMode>,
 )
