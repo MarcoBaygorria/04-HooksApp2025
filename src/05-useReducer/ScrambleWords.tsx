@@ -31,85 +31,17 @@ export const ScrambleWords = () => {
         totalWords
     } = state
 
-
-    // const [words, setWords] = useState(shuffleArray(GAME_WORDS));
-
-    // const [currentWord, setCurrentWord] = useState(words[0]);
-    // const [scrambledWord, setScrambledWord] = useState(scrambleWord(currentWord));
-    // const [guess, setGuess] = useState('');
-    // const [points, setPoints] = useState(0);
-    // const [errorCounter, setErrorCounter] = useState(0);
-    // const [maxAllowErrors, setMaxAllowErrors] = useState(3);
-
-    // const [skipCounter, setSkipCounter] = useState(0);
-    // const [maxSkips, setMaxSkips] = useState(3);
-
-    // const [isGameOver, setIsGameOver] = useState(false);
-
     const handleGuessSubmit = (e: React.FormEvent) => {
-        // // Previene el refresh de la página
         e.preventDefault();
-        // // Implementar lógica de juego
-        // if (guess.trim().toLowerCase() === currentWord.toLowerCase()) {
-        //     setPoints(prev => prev + 1);// +1 puntos por acierto
-        //     confetti({
-        //         particleCount: 100,
-        //         spread: 120,
-        //         origin: { y: 0.6 }
-        //     })
-        //     setGuess('');
-
-        //     // pasar a la siguiente palabra
-        //     const nextIndex = words.indexOf(currentWord) + 1;
-        //     if (nextIndex < words.length) {
-        //         const nextWord = words[nextIndex];
-        //         setCurrentWord(nextWord);
-        //         setScrambledWord(scrambleWord(nextWord));
-        //     } else {
-        //         setIsGameOver(true); // no hay más palabras
-        //     }
-        // } else {
-        //     setErrorCounter(prev => {
-        //         const newErrors = prev + 1;
-        //         if (newErrors >= maxAllowErrors) {
-        //             setIsGameOver(true);
-        //         }
-        //         return newErrors;
-        //     });
-        //     setGuess('');
-        //}
-
+        dispatch({ type: 'CHECK_ANSWER', })
     };
 
     const handleSkip = () => {
-        // if (skipCounter >= maxSkips) return;
-
-        // setSkipCounter(prev => prev + 1);
-
-        // const nextIndex = words.indexOf(currentWord) + 1;
-        // if (nextIndex < words.length) {
-        //     const nextWord = words[nextIndex];
-        //     setCurrentWord(nextWord);
-        //     setScrambledWord(scrambleWord(nextWord));
-        //     setGuess('');
-        // } else {
-        //     setIsGameOver(true);
-        // }
-
-
+        dispatch({ type: 'SKIP_WORD' })
     };
 
     const handlePlayAgain = () => {
-        // const newWords = shuffleArray(GAME_WORDS);
-        // setWords(newWords);
-        // setCurrentWord(newWords[0]);
-        // setScrambledWord(scrambleWord(newWords[0]));
-        // setGuess('');
-        // setPoints(0);
-        // setErrorCounter(0);
-        // setSkipCounter(0);
-        // setIsGameOver(false)
-
+        dispatch({ type: 'START_NEW_GAME', payload: getInitialState() })
     };
 
     //! Si ya no hay palabras para jugar, se muestra el mensaje de fin de juego
@@ -191,8 +123,9 @@ export const ScrambleWords = () => {
                                         type="text"
                                         value={guess}
                                         onChange={(e) => {
-                                            //setGuess(e.target.value.toUpperCase().trim())
-                                            console.log(e.target.value)
+                                            dispatch({
+                                                type: 'SET_GUESS', payload: e.target.value
+                                            })
                                         }}
                                         placeholder="Ingresa tu palabra..."
                                         className="text-center text-lg font-semibold h-12 border-2 border-indigo-200 focus:border-indigo-500 transition-colors"
