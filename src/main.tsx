@@ -1,10 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { TasksApp } from './05-useReducer/TaskApp.js'
-import { ScrambleWords } from './05-useReducer/ScrambleWords.js'
+import { MemoHook } from './06-memos/MemoHook.js'
 
 
+
+// import { TasksApp } from './05-useReducer/TaskApp.js'
+// import { ScrambleWords } from './05-useReducer/ScrambleWords.js'
 // import { FocusScreen } from './04-useRef/FocusScreen.js'
 // import { HokksApp } from './HokksApp.js'
 // import { TrafficLight } from './01-useState/TrafficLght.js'
@@ -22,6 +24,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     {/* <FocusScreen /> */}
     {/* <TasksApp /> */}
 
-    <ScrambleWords />
+    {/* <ScrambleWords /> */}
+    <MemoHook />
   </React.StrictMode>,
 )
