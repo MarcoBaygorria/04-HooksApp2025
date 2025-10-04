@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
-import { InstagromApp } from './07-useOptimistic/InstagromApp.js'
 
+
+
+
+// import { InstagromApp } from './07-useOptimistic/InstagromApp.js'
 // import { MemoCounter } from './06-memos/MemoCounter.js'
 // import { MemoHook } from './06-memos/MemoHook.js'
 // import { TasksApp } from './05-useReducer/TaskApp.js'
@@ -13,6 +16,9 @@ import { InstagromApp } from './07-useOptimistic/InstagromApp.js'
 // import { TrafficLightWithEffect } from './02-useEffect/TrafficLightWithEffect.js'
 // import { TrafficLightWithHook } from './02-useEffect/TrafficLightWithHook.js'
 // import { PokemonPage } from './03-examples/PokemonPage.js'
+import { ClientInformation } from './08-use-suspense/ClientInformation.js';
+import { getUserAction } from './08-use-suspense/api/get-user.action.js';
+import { Divide } from 'lucide-react';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -23,10 +29,18 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     {/* <PokemonPage /> */}
     {/* <FocusScreen /> */}
     {/* <TasksApp /> */}
-
     {/* <ScrambleWords /> */}
     {/* <MemoHook /> */}
     {/* <MemoCounter /> */}
-    <InstagromApp />
+    {/* <InstagromApp /> */}
+    <Suspense
+      fallback={
+        <div className='bg-gradient flex flex-col'>
+          <h1 className='text-2xl'>Cargando</h1>
+        </div>
+      }
+    >
+      <ClientInformation getUser={getUserAction(1000)} />
+    </Suspense>
   </React.StrictMode>,
 )
