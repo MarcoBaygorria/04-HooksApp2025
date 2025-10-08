@@ -16,9 +16,10 @@ import './index.css'
 // import { TrafficLightWithEffect } from './02-useEffect/TrafficLightWithEffect.js'
 // import { TrafficLightWithHook } from './02-useEffect/TrafficLightWithHook.js'
 // import { PokemonPage } from './03-examples/PokemonPage.js'
-import { ClientInformation } from './08-use-suspense/ClientInformation.js';
-import { getUserAction } from './08-use-suspense/api/get-user.action.js';
-import { Divide } from 'lucide-react';
+// import { ClientInformation } from './08-use-suspense/ClientInformation.js';
+// import { getUserAction } from './08-use-suspense/api/get-user.action.js';
+// import { Divide } from 'lucide-react';
+import { ProfessionalApp } from './09-useContext/ProfessionalApp.js';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
@@ -33,14 +34,15 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     {/* <MemoHook /> */}
     {/* <MemoCounter /> */}
     {/* <InstagromApp /> */}
-    <Suspense
+    {/* <Suspense
       fallback={
         <div className='bg-gradient flex flex-col'>
           <h1 className='text-2xl'>Cargando</h1>
         </div>
       }
     >
-      <ClientInformation getUser={getUserAction(1000)} />
-    </Suspense>
+      <ClientInformation getUser={getUserAction(1000)} /> */}
+    {/* </Suspense> */}
+    <ProfessionalApp />
   </React.StrictMode>,
 )
