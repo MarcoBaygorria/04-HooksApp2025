@@ -20,10 +20,12 @@ import './index.css'
 // import { getUserAction } from './08-use-suspense/api/get-user.action.js';
 // import { Divide } from 'lucide-react';
 import { ProfessionalApp } from './09-useContext/ProfessionalApp.js';
+import { Toaster } from 'react-hot-toast';
 
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
+    <Toaster />
     {/* <TrafficLight /> */}
     {/* <TrafficLightWithEffect /> */}
     {/* <TrafficLightWithHook /> */}
